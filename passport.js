@@ -1,6 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-const JwtStrategy = require("passport-jwt");
+const JwtStrategy = require("passport-jwt").Strategy;
 
 const User = require("./models/User");
 const key = process.env.JWT_KEY;
@@ -16,7 +16,7 @@ const cookieExtractor = (req) => {
 
 ////Middleware used for authorization, protecting some endpoints
 passport.use(
-  new LocalStrategy(
+  new JwtStrategy(
     {
       jwtFromRequest: cookieExtractor,
       secretOrKey: key,
