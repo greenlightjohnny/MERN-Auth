@@ -1,16 +1,14 @@
 import React, { useContext } from "react";
 import { AuthContext } from "./Context/AuthContext";
-
+import Nav from "./Components/Navbar";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Home from "./Components/Home";
 function App() {
-  const { user, setUser, isAuthenticated, setIsAuthenticated } = useContext(
-    AuthContext
-  );
-  console.log(user);
-  console.log(isAuthenticated);
   return (
-    <div className="App">
-      <p>Wooo</p>
-    </div>
+    <Router>
+      <Nav />
+      <Route exact path="/" component={Home}></Route>
+    </Router>
   );
 }
 
