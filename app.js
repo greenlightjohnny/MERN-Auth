@@ -22,18 +22,21 @@ mongoose.connect(
   () => console.log("Connected to DB")
 );
 
-const User = require("./models/User");
-const userInput = {
-  username: "waawaa",
-  password: "12345678",
-  role: "user",
-};
+const userRouter = require("./routes/User");
+app.use("/user", userRouter);
 
-const user = new User(userInput);
-user.save((err, document) => {
-  if (err) console.log(err);
-  console.log(document);
-});
+// const User = require("./models/User");
+// const userInput = {
+//   username: "waawaa",
+//   password: "12345678",
+//   role: "user",
+// };
+
+// const user = new User(userInput);
+// user.save((err, document) => {
+//   if (err) console.log(err);
+//   console.log(document);
+// });
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
