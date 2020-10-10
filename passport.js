@@ -16,7 +16,7 @@ const cookieExtractor = (req) => {
 
 ////Middleware used for authorization, protecting some endpoints
 passport.use(
-  new JwtStrategy(
+  new LocalStrategy(
     {
       jwtFromRequest: cookieExtractor,
       secretOrKey: key,

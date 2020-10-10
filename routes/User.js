@@ -13,18 +13,14 @@ userRouter.post("/register", (req, res) => {
   const { username, password, role } = req.body;
   User.findOne({ username }, (err, user) => {
     if (err) {
-      return res
-        .status(500)
-        .json({
-          message: { msgBody: "An error has happened..", msgError: true },
-        });
+      return res.status(500).json({
+        message: { msgBody: "An error has happened..", msgError: true },
+      });
     }
     if (user) {
-      return res
-        .status(400)
-        .json({
-          message: { msgBody: "Username already taken..", msgError: true },
-        });
+      return res.status(400).json({
+        message: { msgBody: "Username already taken..", msgError: true },
+      });
     }
     const newUser = new User({
       username,
@@ -33,11 +29,9 @@ userRouter.post("/register", (req, res) => {
     });
     newUser.save((err) => {
       if (err) {
-        return res
-          .status(500)
-          .json({
-            message: { msgBody: "Error saving to db..", msgError: true },
-          });
+        return res.status(500).json({
+          message: { msgBody: "Error saving to db..", msgError: true },
+        });
       } else {
         return res
           .status(201)
@@ -46,3 +40,5 @@ userRouter.post("/register", (req, res) => {
     });
   });
 });
+
+module.exports = userRouter;
