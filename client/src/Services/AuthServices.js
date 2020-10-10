@@ -3,7 +3,7 @@
 export default {
   login: (user) => {
     return fetch("/user/login", {
-      method: post,
+      method: "POST",
       body: JSON.stringify(user),
       headers: {
         "Content-Type": "application/json",
@@ -15,7 +15,7 @@ export default {
 
   register: (user) => {
     return fetch("/user/register", {
-      method: post,
+      method: "POST",
       body: JSON.stringify(user),
       headers: {
         "Content-Type": "application/json",
@@ -26,6 +26,19 @@ export default {
   },
 
   logout: () => {
-    return fetch("/user/logout").then(res);
+    return fetch("/user/logout")
+      .then((res) => res.json())
+      .then((data) => data);
+  },
+
+  ///Sync back and front end together
+  isAuthenticated: () => {
+    return fetch("/user/auth").then((res) => {
+      if (res.status !== 401) {
+        return res.json().then((data) => data);
+      } else {
+        return { isAuthenticated: false, user: { username: "", role: "" } };
+      }
+    });
   },
 };
