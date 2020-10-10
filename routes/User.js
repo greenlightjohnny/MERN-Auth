@@ -80,7 +80,7 @@ userRouter.get(
   }
 );
 
-////// Todo app route
+////// Todo app route Post, add item
 userRouter.post(
   "/todo",
   passport.authenticate("jwt", { session: false }),
@@ -106,6 +106,56 @@ userRouter.post(
         });
       }
     });
+  }
+);
+
+// todo GET route, fetch list of items
+
+userRouter.get(
+  "/todo",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    ///Find todos list if it exists
+    User.findById({ _id: req.user._id })
+      .populate("todos")
+      .exec((err, document) => {
+        if (err) {
+          res.status(500).json({
+            message: { msgBody: "Error fetching list" },
+            success: false,
+          });
+        } else {
+          res.status(200).json({ todos: document.todos, authenticate: true });
+        }
+      });
+  }
+);
+
+// Admin route
+userRouter.get(
+  "/admin",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    ///Find todos list if it exists
+    if (req.user.role === "admin") {
+      res
+        .status(200)
+        .json({ message: { msgBody: "Admin verified" }, msgError: false });
+    } else {
+      res
+        .status(403)
+        .json({ message: { msgBody: "Not an admin" }, msgError: true });
+    }
+  }
+);
+
+// Keeps backend and frontend synced for auth, allows browser to close and open and user does not have log in again. For React;
+userRouter.get(
+  "/auth",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    const { username, role } = req.user;
+    res.status(200).json({ isAuthenticated: true, user: { username, role } });
   }
 );
 
