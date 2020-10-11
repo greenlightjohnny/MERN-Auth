@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import AuthService from "../Services/AuthServices";
 import { AuthContext } from "../Context/AuthContext";
 import Styles from "./navbar.module.scss";
+import Mylogo from "../images/mylogo.png";
 
 const Navbar = (props) => {
   const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(
@@ -60,7 +61,9 @@ const Navbar = (props) => {
     <nav className={Styles.nav}>
       <div className={Styles.container}>
         <Link to="/">
-          <p className={Styles.hmmm}>Home</p>
+          <div className={Styles.logocon}>
+            <img src={Mylogo} alt="shape"></img>
+          </div>
         </Link>
 
         <div>

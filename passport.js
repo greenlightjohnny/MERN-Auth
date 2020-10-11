@@ -29,7 +29,7 @@ passport.use(
         if (user) {
           return done(null, user);
         } else {
-          return done;
+          return done(null, false);
         }
       });
     }

@@ -1,52 +1,55 @@
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
 
-    flex-direction: row;
-    flex: 1;
-    justify-content: space-between;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
 
-    a {
-        text-decoration: none;
-        color: #fff;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        margin-left: 9px;
+  a {
+    text-decoration: none;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+  }
+  .logocon {
+    max-height: 50px;
+    margin-top: 10px;
+    img {
+      object-fit: contain;
+      height: 50px;
     }
-
+  }
 }
 
 ul {
-    display: flex;
+  display: flex;
 
-    flex-direction: row;
-    flex: 1;
+  flex-direction: row;
+  flex: 1;
 
-
-    li {
-
-        text-decoration: none;
-
-
-
-    }
+  li {
+    text-decoration: none;
+  }
 }
 
 .nav {
-    display: flex;
-    background-color: #030330;
-    flex-direction: row;
-    ;
-    flex: 1;
-    justify-content: space-between;
+  display: flex;
+  //background-color: #030330;
+  background-color: transparent;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
 }
 
 .list {
-    color: #fff;
-    list-style-type: none;
+  color: #fff;
+  list-style-type: none;
+  font-weight: bold;
 }
 
 .btn {
-    background-color: aqua;
+  background-color: aqua;
 }

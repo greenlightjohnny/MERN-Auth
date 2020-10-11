@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="882px" height="786px" viewBox="0 0 882 786" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.1 (67048) - http://www.bohemiancoding.com/sketch -->
+    <title>Path 3 Copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="104.652095%" y1="133.001774%" x2="0%" y2="20.296224%" id="linearGradient-1">
+            <stop stop-color="#9ED7FA" offset="0%"></stop>
+            <stop stop-color="#0191FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M14.9277695,42.2439562 C-41.4831857,344.452122 61.9855319,495.556205 325.333922,495.556205 C720.356508,495.556205 297.180552,786 546.402755,786 C712.550891,786 824.416639,653.04361 882,387.130831 L778.273353,0" id="path-2"></path>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Path-3-Copy-2">
+            <g>
+                <g>
+                    <g>
+                        <g>
+                            <g>
+                                <g>
+                                    <g>
+                                        <g>
+                                            <g>
+                                                <g>
+                                                    <mask id="mask-3" fill="white">
+                                                        <use xlink:href="#path-2"></use>
+                                                    </mask>
+                                                    <use id="Mask" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                                                    <path d="M-70,142.508857 C-70,142.508857 438.879563,95.8084299 722,303" stroke="#FFFFFF" stroke-width="4" opacity="0.150576637" mask="url(#mask-3)"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
