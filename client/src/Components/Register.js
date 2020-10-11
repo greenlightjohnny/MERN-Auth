@@ -5,7 +5,7 @@ import Message from "../Components/Message";
 import Styles from "./login.module.scss";
 
 const Register = (props) => {
-  const [user, setUser] = useState({ username: "", password: "" });
+  const [user, setUser] = useState({ username: "", password: "", role: "" });
   const [message, setMessage] = useState(null);
   let timeID = useRef(null);
 
@@ -64,6 +64,19 @@ const Register = (props) => {
           />
           <label htmlFor="password" className={Styles.label}>
             Password:
+          </label>
+        </div>
+
+        <div className={Styles.box}>
+          <input
+            type="text"
+            required
+            name="role"
+            onChange={onChange}
+            className={Styles.input}
+          />
+          <label htmlFor="role" className={Styles.label}>
+            Role: admin or user
           </label>
         </div>
 
