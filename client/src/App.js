@@ -4,6 +4,7 @@ import Nav from "./Components/Navbar";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "./Components/Home";
 import Login from "./Components/Login";
+import Register from "./Components/Register";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Nav />
       <Route exact path="/" component={Home}></Route>
       <Route path="/login" component={Login}></Route>
+      <Route path="/register" component={Register}></Route>
     </Router>
   );
 }

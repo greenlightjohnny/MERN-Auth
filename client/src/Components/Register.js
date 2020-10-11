@@ -1,30 +1,39 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import AuthService from "../Services/AuthServices";
 import Message from "../Components/Message";
-import { AuthContext } from "../Context/AuthContext";
+
 import Styles from "./login.module.scss";
 
-const Login = (props) => {
+const Register = (props) => {
   const [user, setUser] = useState({ username: "", password: "" });
   const [message, setMessage] = useState(null);
-  const authContext = useContext(AuthContext);
+  let timeID = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      clearTimeout(timeID);
+    };
+  }, []);
 
   const onChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  const resetForm = () => {
+    setUser({ username: "", password: "", role: "" });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     ///Use the auth service
-    AuthService.login(user).then((data) => {
-      const { isAuthenticated, user, message } = data;
-      if (isAuthenticated) {
-        authContext.setUser(user);
-        authContext.setIsAuthenticated(isAuthenticated);
-        ///takes user to dashboard if auth works
-        props.history.push("/todos");
-      } else {
-        setMessage(message);
+    AuthService.register(user).then((data) => {
+      const { message } = data;
+      setMessage(message);
+      resetForm();
+      if (!message.msgError) {
+        timeID = setTimeout(() => {
+          props.history.push("/login");
+        }, 2000);
       }
     });
   };
@@ -32,7 +41,7 @@ const Login = (props) => {
   return (
     <div className={Styles.container}>
       <form onSubmit={handleSubmit}>
-        <h3>Login</h3>
+        <h3>Register</h3>
         <div className={Styles.box}>
           <input
             type="text"
@@ -59,7 +68,7 @@ const Login = (props) => {
         </div>
 
         <button className={Styles.btn} type="submit">
-          Login
+          Register
         </button>
       </form>
       {message ? <Message message={message} /> : null}
@@ -67,4 +76,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Register;
