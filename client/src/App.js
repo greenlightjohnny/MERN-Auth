@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { AuthContext } from "./Context/AuthContext";
 import PrivateRoute from "./hocs/PrivateRoute";
+import UnPrivateRoute from "./hocs/UnPrivateRoute";
 import Nav from "./Components/Navbar";
 import Admin from "./Components/Admin";
 import Home from "./Components/Home";
@@ -14,8 +15,9 @@ function App() {
     <Router>
       <Nav />
       <Route exact path="/" component={Home}></Route>
-      <Route path="/login" component={Login}></Route>
-      <Route path="/register" component={Register}></Route>
+      <UnPrivateRoute path="/login" component={Login} />
+      <UnPrivateRoute path="/register" component={Register} />
+
       <PrivateRoute path="/todos" roles={["user", "admin"]} component={Todos} />
       <PrivateRoute path="/admin" roles={["admin"]} component={Admin} />
     </Router>

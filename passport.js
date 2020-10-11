@@ -4,7 +4,7 @@ const JwtStrategy = require("passport-jwt").Strategy;
 
 const User = require("./models/User");
 const key = process.env.JWT_KEY;
-
+console.log("frompassport", key);
 ////extract cookie from req obj
 const cookieExtractor = (req) => {
   let token = null;
