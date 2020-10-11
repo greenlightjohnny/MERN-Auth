@@ -13,7 +13,7 @@
 
   .mainhero {
     display: flex;
-    min-height: 50vh;
+    //min-height: 50vh;
     max-width: 100%;
 
     .hero {
@@ -29,8 +29,8 @@
     .center {
       display: flex;
       flex-direction: column;
-      height: 100vh;
-      align-items: center;
+      //height: 100vh;
+      //align-items: center;
       width: 1200px;
       max-width: 90%;
       margin: 0 auto;
@@ -60,6 +60,35 @@
           width: fit-content;
           border-radius: 20px;
         }
+
+        .flex {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          flex: 1;
+
+          h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0;
+          }
+
+          ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: column;
+            margin-left: 0;
+            padding-left: 0;
+
+            li {
+              margin-bottom: 0.5rem;
+              font-size: 1.2rem;
+            }
+          }
+
+          div {
+            margin: 2rem 2rem;
+          }
+        }
       }
     }
   }
@@ -70,11 +99,86 @@
   margin: 0 auto;
 
   h1 {
-    text-align: center;
-    font-size: 5rem;
+    //text-align: center;
+    font-size: 4rem;
+    margin-bottom: 1rem;
   }
 
   h2 {
     margin-bottom: 1rem;
+  }
+  p {
+    line-height: 1.3rem;
+  }
+}
+
+.timeline {
+  //Colors
+  $black: #34435e;
+  $white: #ffffff;
+
+  .timecon {
+    min-width: 300px;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  p {
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    border-top: 3px solid;
+    border-image: linear-gradient(to right, #00b0f4 0%, #01e9d7 100%);
+    border-image-slice: 1;
+    border-width: 3px;
+    margin: 0;
+    padding: 40px;
+    counter-increment: section;
+    position: relative;
+    color: $black;
+
+    //numbers
+    &:before {
+      content: counter(section);
+      position: absolute;
+      border-radius: 50%;
+      padding: 10px;
+      height: 3rem;
+      width: 3rem;
+      background-color: $black;
+      text-align: center;
+      line-height: 1.25em;
+      color: $white;
+      font-size: 1em;
+    }
+  }
+  //odd number borders
+  p:nth-child(odd) {
+    border-right: 3px solid;
+    padding-left: 0;
+
+    &:before {
+      left: 100%;
+      margin-left: -20px;
+    }
+  }
+  //even number borders
+  p:nth-child(even) {
+    border-left: 3px solid;
+    padding-right: 0;
+
+    &:before {
+      right: 100%;
+      margin-right: -20px;
+    }
+  }
+  //handle first and last
+  p:first-child {
+    border-top: 0;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 0;
+  }
+  p:last-child {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
