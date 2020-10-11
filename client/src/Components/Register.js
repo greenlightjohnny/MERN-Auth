@@ -46,6 +46,7 @@ const Register = (props) => {
           <input
             type="text"
             required
+            value={user.username}
             name="username"
             onChange={onChange}
             className={Styles.input}
@@ -59,6 +60,7 @@ const Register = (props) => {
             type="password"
             required
             name="password"
+            value={user.password}
             onChange={onChange}
             className={Styles.input}
           />
@@ -72,6 +74,7 @@ const Register = (props) => {
             type="text"
             required
             name="role"
+            value={user.role}
             onChange={onChange}
             className={Styles.input}
           />
