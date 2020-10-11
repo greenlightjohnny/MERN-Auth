@@ -1,17 +1,15 @@
-import Todo from "../../../models/Todo";
-
 export default {
   getTodos: () => {
-    return fetch("/user/todos").then((res) => {
+    return fetch("/user/todo").then((res) => {
       if (res.status != 401) {
         return res.json().then((data) => data);
       } else {
-        return { message: { msgBody: "No auth" }, msgError: true };
+        return { message: { msgBody: "UnAuthorized" }, msgError: true };
       }
     });
   },
 
-  postTodo: () => {
+  postTodo: (todo) => {
     return fetch("/user/todo", {
       method: "post",
       body: JSON.stringify(todo),

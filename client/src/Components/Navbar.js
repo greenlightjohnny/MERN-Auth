@@ -40,7 +40,7 @@ const Navbar = (props) => {
         <Link to="/">
           <li className={Styles.list}>Home</li>
         </Link>
-        <Link to="/todo">
+        <Link to="/todos">
           <li className={Styles.list}>Todo</li>
         </Link>
         {user.role === "admin" ? (

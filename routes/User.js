@@ -154,6 +154,7 @@ userRouter.get(
   "/auth",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
+    console.log(req);
     const { username, role } = req.user;
     res.status(200).json({ isAuthenticated: true, user: { username, role } });
   }

@@ -2,7 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import TodoItem from "./TodoItem";
 import TodoService from "../Services/TodoService";
 import { AuthContext } from "../Context/AuthContext";
-import e from "express";
+import Message from "./Message";
+import Styles from "./todos.module.scss";
 
 const Todos = () => {
   const [todo, setTodo] = useState({ name: "" });
@@ -17,7 +18,11 @@ const Todos = () => {
   }, []);
 
   const handleChange = (e) => {
-    e.preventDefault();
+    setTodo({ name: e.target.value });
+  };
+
+  const resetForm = () => {
+    setTodo({ name: "" });
   };
 
   const handleSubmit = (e) => {
@@ -29,28 +34,41 @@ const Todos = () => {
         ///if it was submitted successfully, fetch updated list again from server
         TodoService.getTodos().then((getData) => {
           setTodos(getData.todos);
+          setMessage(message);
         });
+      } else if (message.msgBody === "UnAuthorized") {
+        ///will fire if JWT is expired, set global context
+        setMessage(message);
+        authContext.setUser({ username: "", role: "" });
+        authContext.isAuthenticated(false);
+      } else {
+        setMessage(message);
       }
     });
   };
 
   return (
-    <div>
+    <div className={Styles.container2}>
       <ul>
         {todos.map((i) => {
-          return <TodoItem key={todo_id} todo={i} />;
+          return <TodoItem key={i._id} todo={i} />;
         })}
       </ul>
       <br></br>
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="todo"
-          value={todo.name}
-          onChange={handleChange}
-        ></input>
-        <label htmlFor="todo">Add item</label>
-        <button type="submit">Submit</button>
+        <div className={Styles.box}>
+          <input
+            type="text"
+            name="todo"
+            required
+            value={todo.name}
+            onChange={handleChange}
+          ></input>
+          <label htmlFor="todo">Add item</label>
+        </div>
+        <button className={Styles.btn} type="submit">
+          Submit
+        </button>
       </form>
       {message ? <Message message={message} /> : null}
     </div>
