@@ -8,13 +8,23 @@ const Home = () => {
     <div className={Styles.conman}>
       <img className={Styles.shape1} src={Shape1} alt="shape"></img>
       <div className={Styles.mainhero}>
-        <img className={Styles.hero} src={Hero} alt="shape"></img>
+        {/* <img className={Styles.hero} src={Hero} alt="shape"></img> */}
         <div className={Styles.center}>
           <div className={Styles.centertext}>
             <h1>
               {/* Welcome to the <br></br> Job Search */}
               MERN Skelton
             </h1>
+            <p>
+              Node REST API for registration and authentication/authorization to
+              protected resources. A separate MongoDB server stores user
+              credentials and user specific data. Uses JWTs for session
+              persistence, Express for routing, Mongoose for MongoDB Schemas and
+              connectivity, Passport for authentication help, Bcrypt for
+              password hashing, and of course a React SPA for the Front End
+              using all functional components and the useContext Hook for global
+              state management.
+            </p>
             {/* <p>
               "Just walk into a place, give the manager a firm handshake, and
               ask for a job" - Parents <br></br>
@@ -48,7 +58,7 @@ const Home = () => {
                   <li>Fetch API</li>
                 </ul>
               </div>
-              <div className={Styles.flexitem}>
+              {/* <div className={Styles.flexitem}>
                 <h4>About</h4>
                 <p>
                   This is a simple React SPA that has a Node and MongoDB Back
@@ -75,10 +85,10 @@ const Home = () => {
                   returned from the Node server to the React Front End, where it
                   is stored as a cookie.{" "}
                 </p>
-              </div>
+              </div> */}
             </div>
 
-            <Link to="/">Test</Link>
+            {/* <Link to="/">Test</Link> */}
           </div>
         </div>
       </div>
@@ -95,6 +105,7 @@ const Home = () => {
 
       <section className={Styles.timeline}>
         <div className={Styles.timecon}>
+          <h2>Flow</h2>
           <p>
             Registration: Client uses the registration form and clicks the
             submit button. The React SPA Front End extracts the form data from
@@ -105,20 +116,51 @@ const Home = () => {
             The Node server receives the request from the client, and uses
             Express for the routing. Express uses a route for
             '/user/registration' and extracts the username and password from the
-            client request. Next it passes it onto Mongoose.
-          </p>
-          <p> </p>
-          <p>
-            Long bois mlem I am bekom fat wrinkler puggo maximum borkdrive big
-            ol pupper I am bekom fat, fluffer vvv adorable doggo lotsa pats
-            snoot. I am bekom fat ur givin me a spook length boy wow very biscit
-            very good spot.
+            client request. Next it passes it onto Mongoose. The Node server
+            uses the a Mongoose Schema for the user and Mongoose connects to the
+            separate MongoDB database server, Atlas in this case.
           </p>
           <p>
-            Doggo ipsum long bois lotsa pats blep. What a nice floof ruff super
-            chub very good spot, the neighborhood pupper lotsa pats. Borkdrive
-            shibe shoober what a nice floof, borking doggo.
+            {" "}
+            The database server is searched by Mongoose to see if the user
+            already exists. If not Mongoose uses Bcrypt to salt and hash the
+            password before storing it into the MongoDB database.{" "}
           </p>
+          <p>
+            If the user is registered successfully, the Node server returns a
+            success message to the React client and the user is redirected to
+            the login page after displaying a success message. At the login page
+            the client can enter their username and password, which will send
+            another Fetch API post request to the Node server.
+          </p>
+          <p>
+            The Node server REST API again receives a post request from the
+            client, and this time it is to the '/user/login' route which Express
+            handles. Express extracts the username and password from the client
+            request and passes to Mongoose.
+          </p>
+          <p>
+            Mongoose connects to the database, and first checks to see if the
+            username exists. If so, it compares the hashed and salted password
+            with the one provided by the client to see if they match. If they
+            do, it returns a message to the Node server with the ID of the user
+            and a message saying they are authenticated.
+          </p>
+          <p>
+            The Node server now uses a secret key along with the ID of the user
+            to create and sign a JWT. It sends this token back to the client,
+            with instructions to set it as a cookie and send it with every
+            request to the server. Over HTTPS only, of course.
+          </p>
+          <p>
+            The client receives a reply from the Node server with the JWT cookie
+            and a message that the client is now authorized to view protected
+            routes. The client is logged in and sent to the list page, which is
+            a simple "to do" app. Here the client can add items to the list,
+            which are sent to the Node server and onto be saved on the Atlas
+            MongoDB server.
+          </p>
+          <h2>Finish!</h2>
         </div>
       </section>
     </div>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="409px" height="409px" viewBox="0 0 409 409" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.1 (67048) - http://www.bohemiancoding.com/sketch -->
+    <title>Oval Copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="110.521557%" y1="139.322917%" x2="0%" y2="20.296224%" id="linearGradient-1">
+            <stop stop-color="#00B0F4" offset="0%"></stop>
+            <stop stop-color="#01E9D7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.196544829">
+        <circle id="Oval-Copy-2" stroke="url(#linearGradient-1)" stroke-width="45" cx="204.5" cy="204.5" r="181.5"></circle>
+    </g>
+</svg>
