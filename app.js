@@ -25,6 +25,10 @@ mongoose.connect(
 const userRouter = require("./routes/User");
 app.use("/user", userRouter);
 
+app.get("/", (req, res) => {
+  res.send("Hello from Express!");
+});
+
 // const User = require("./models/User");
 // const userInput = {
 //   username: "waawaa",
