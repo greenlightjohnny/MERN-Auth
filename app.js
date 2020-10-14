@@ -3,8 +3,14 @@ const cookieParser = require("cookie-parser");
 require("dotenv").config();
 //dotenv.config();
 const mongoose = require("mongoose");
+const cors = require("cors");
+
+const corsOptions = {
+  origin: "https://mern-skeleton.netlify.app",
+};
 
 const app = express();
+app.use(cors(corsOptions));
 
 app.use(cookieParser());
 // Parse JSON sent from client
