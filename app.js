@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 
 const corsOptions = {
-  origin: "https://mern-skeleton.netlify.app/",
+  origin: "https://mern-skeleton.netlify.app",
 };
 
 const app = express();
